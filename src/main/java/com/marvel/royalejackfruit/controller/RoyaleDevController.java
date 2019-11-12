@@ -1,13 +1,11 @@
 package com.marvel.royalejackfruit.controller;
 
-import com.marvel.royalejackfruit.domain.vo.royaledev.ItemList;
-import com.marvel.royalejackfruit.domain.vo.royaledev.TournamentHeaderList;
+import com.marvel.royalejackfruit.domain.vo.royaledev.*;
 import com.marvel.royalejackfruit.service.RoyaleDevService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * Created by Marvel on 2019/11/12.
@@ -21,6 +19,21 @@ public class RoyaleDevController {
     @Autowired
     public RoyaleDevController(RoyaleDevService royaleDevService) {
         this.royaleDevService = royaleDevService;
+    }
+
+    @GetMapping("/players/{tag}")
+    public Player getPlayer(@PathVariable String tag) {
+        return royaleDevService.getPlayer(tag);
+    }
+
+    @GetMapping("/players/{tag}/upcomingchests")
+    public ChestList getPlayerUpcomingChests(@PathVariable String tag) {
+        return royaleDevService.getPlayerUpcomingChests(tag);
+    }
+
+    @GetMapping("/players/{tag}/battlelog")
+    public List<Battle> getPlayerBattleLog(@PathVariable String tag) {
+        return royaleDevService.getPlayerBattleLog(tag);
     }
 
     @GetMapping("/tournaments")

@@ -10,6 +10,8 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 
 /**
  * Created by Marvel on 2019/11/12.
@@ -43,6 +45,16 @@ public class HttpHelper {
             httpGet.releaseConnection();
         }
         return httpResponseJson;
+    }
+
+    public static String encode(String s) {
+        String result = "";
+        try {
+            result = URLEncoder.encode(s, "UTF-8");
+        } catch (UnsupportedEncodingException e) {
+            logger.error(e.getMessage(), e);
+        }
+        return result;
     }
 
 }
