@@ -51,6 +51,34 @@ public class RoyaleDevServiceImpl implements RoyaleDevService {
     }
 
     @Override
+    public Clan getClan(String tag) {
+        String url = RoyaleDevURL.clan(tag);
+        HttpResponseJson httpResponseJson = HttpHelper.get(url, royaleToken);
+        return gson.fromJson(httpResponseJson.getResponseJson(), Clan.class);
+    }
+
+    @Override
+    public ClanMemberList getClanMembers(String tag) {
+        String url = RoyaleDevURL.members(tag);
+        HttpResponseJson httpResponseJson = HttpHelper.get(url, royaleToken);
+        return gson.fromJson(httpResponseJson.getResponseJson(), ClanMemberList.class);
+    }
+
+    @Override
+    public ClanWarLog getClanWarLog(String tag) {
+        String url = RoyaleDevURL.warlog(tag);
+        HttpResponseJson httpResponseJson = HttpHelper.get(url, royaleToken);
+        return gson.fromJson(httpResponseJson.getResponseJson(), ClanWarLog.class);
+    }
+
+    @Override
+    public CurrentClanWar getClanCurrentWar(String tag) {
+        String url = RoyaleDevURL.currentwar(tag);
+        HttpResponseJson httpResponseJson = HttpHelper.get(url, royaleToken);
+        return gson.fromJson(httpResponseJson.getResponseJson(), CurrentClanWar.class);
+    }
+
+    @Override
     public TournamentHeaderList searchTournaments(String name) {
         String url = RoyaleDevURL.tournaments() + "?name=" + name;
         HttpResponseJson httpResponseJson = HttpHelper.get(url, royaleToken);

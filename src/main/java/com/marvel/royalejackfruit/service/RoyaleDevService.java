@@ -25,25 +25,25 @@ public interface RoyaleDevService {
      */
     List<Battle> getPlayerBattleLog(String tag);
 
-//    /**
-//     * 获取部落信息
-//     */
-//    void getClan(String tag);
-//
-//    /**
-//     * 获取部落成员列表
-//     */
-//    void getClanMembers(String tag);
-//
-//    /**
-//     * 获取部落最近的部落战记录
-//     */
-//    void getClanWarLog(String tag);
-//
-//    /**
-//     * 获取部落当前的部落战信息
-//     */
-//    void getClanCurrentWar(String tag);
+    /**
+     * 获取部落信息
+     */
+    Clan getClan(String tag);
+
+    /**
+     * 获取部落成员列表
+     */
+    ClanMemberList getClanMembers(String tag);
+
+    /**
+     * 获取部落最近的部落战记录
+     */
+    ClanWarLog getClanWarLog(String tag);
+
+    /**
+     * 获取部落当前的部落战信息
+     */
+    CurrentClanWar getClanCurrentWar(String tag);
 
     /**
      * 通过名字搜索锦标赛

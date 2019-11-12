@@ -36,6 +36,26 @@ public class RoyaleDevController {
         return royaleDevService.getPlayerBattleLog(tag);
     }
 
+    @GetMapping("/clans/{tag}")
+    public Clan getClan(@PathVariable String tag) {
+        return royaleDevService.getClan(tag);
+    }
+
+    @GetMapping("/clans/{tag}/members")
+    public ClanMemberList getClanMembers(@PathVariable String tag) {
+        return royaleDevService.getClanMembers(tag);
+    }
+
+    @GetMapping("/clans/{tag}/warlog")
+    public ClanWarLog getClanWarLog(@PathVariable String tag) {
+        return royaleDevService.getClanWarLog(tag);
+    }
+
+    @GetMapping("/clans/{tag}/currentwar")
+    public CurrentClanWar getClanCurrentWar(@PathVariable String tag) {
+        return royaleDevService.getClanCurrentWar(tag);
+    }
+
     @GetMapping("/tournaments")
     public TournamentHeaderList searchTournaments(@RequestParam String name) {
         return royaleDevService.searchTournaments(name);
