@@ -1,5 +1,6 @@
 package com.marvel.royalejackfruit.controller;
 
+import com.marvel.royalejackfruit.domain.vo.royaledev.ItemList;
 import com.marvel.royalejackfruit.domain.vo.royaledev.TournamentHeaderList;
 import com.marvel.royalejackfruit.service.RoyaleDevService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,5 +26,10 @@ public class RoyaleDevController {
     @GetMapping("/tournaments")
     public TournamentHeaderList searchTournaments(@RequestParam String name) {
         return royaleDevService.searchTournaments(name);
+    }
+
+    @GetMapping("/cards")
+    public ItemList getCards() {
+        return royaleDevService.getCards();
     }
 }

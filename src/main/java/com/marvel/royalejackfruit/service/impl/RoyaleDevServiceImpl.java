@@ -3,6 +3,7 @@ package com.marvel.royalejackfruit.service.impl;
 import com.google.gson.Gson;
 import com.marvel.royalejackfruit.constant.RoyaleDevURL;
 import com.marvel.royalejackfruit.domain.dto.HttpResponseJson;
+import com.marvel.royalejackfruit.domain.vo.royaledev.ItemList;
 import com.marvel.royalejackfruit.domain.vo.royaledev.TournamentHeaderList;
 import com.marvel.royalejackfruit.helper.HttpHelper;
 import com.marvel.royalejackfruit.service.RoyaleDevService;
@@ -28,5 +29,12 @@ public class RoyaleDevServiceImpl implements RoyaleDevService {
         String url = RoyaleDevURL.TOURNAMENTS + "?name=" + name;
         HttpResponseJson httpResponseJson = HttpHelper.get(url, royaleToken);
         return gson.fromJson(httpResponseJson.getResponseJson(), TournamentHeaderList.class);
+    }
+
+    @Override
+    public ItemList getCards() {
+        String url = RoyaleDevURL.CARDS;
+        HttpResponseJson httpResponseJson = HttpHelper.get(url, royaleToken);
+        return gson.fromJson(httpResponseJson.getResponseJson(), ItemList.class);
     }
 }

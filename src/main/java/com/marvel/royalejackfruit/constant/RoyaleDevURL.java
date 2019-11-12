@@ -6,4 +6,5 @@ package com.marvel.royalejackfruit.constant;
 public class RoyaleDevURL {
 
     public static String TOURNAMENTS = "https://api.clashroyale.com/v1/tournaments";
+    public static String CARDS = "https://api.clashroyale.com/v1/cards";
 }
