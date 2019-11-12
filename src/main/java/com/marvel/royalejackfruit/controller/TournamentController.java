@@ -78,6 +78,8 @@ public class TournamentController {
             return "卡牌三选一模式";
         } else if ("72000027".equals(gameMode)) {
             return "三倍圣水对战";
+        } else if ("72000013".equals(gameMode)) {
+            return "双倍圣水选卡";
         }
         return gameMode;
     }
