@@ -9,8 +9,7 @@ import java.time.LocalDateTime;
  */
 @Data
 public class TournamentVo {
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String remainingTime;
     private String gameMode;
     private String tag;
     private String name;
