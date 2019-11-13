@@ -32,15 +32,12 @@ public class TournamentController {
     }
 
     @GetMapping("/recommend")
-    public Set<TournamentVo> getRecommendTournaments(@RequestParam(required = false, defaultValue = "30") Integer capacity) {
+    public Set<TournamentVo> getRecommendTournaments(@RequestParam(required = false, defaultValue = "30") Integer capacity,
+                                                     @RequestParam(required = false, defaultValue = "a") String name) {
         Set<TournamentVo> tourSet = new HashSet<>();
-        TournamentHeaderList aList = royaleDevService.searchTournaments("a");
-        TournamentHeaderList bList = royaleDevService.searchTournaments("b");
-        TournamentHeaderList cList = royaleDevService.searchTournaments("c");
+        TournamentHeaderList aList = royaleDevService.searchTournaments(name);
         Set<TournamentHeader> sumList = new HashSet<>();
         sumList.addAll(aList.getItems());
-        sumList.addAll(bList.getItems());
-        sumList.addAll(cList.getItems());
 
         sumList.stream().filter(it ->
             "inProgress".equals(it.getStatus()) && "open".equals(it.getType()) && it.getCapacity() > capacity
