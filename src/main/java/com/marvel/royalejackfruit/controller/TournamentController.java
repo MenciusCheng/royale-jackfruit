@@ -95,6 +95,8 @@ public class TournamentController {
             return "双倍圣水选卡";
         } else if ("72000005".equals(gameMode)) {
             return "选卡对战";
+        } else if ("72000124".equals(gameMode)) {
+            return "夺龙之战";
         }
         return gameMode;
     }
