@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.marvel.royalejackfruit.mapper.CardMapper">
+    <resultMap id="BaseResultMap" type="com.marvel.royalejackfruit.entity.Card">
+    </resultMap>
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        insert into card set
+        `id` = #{id},
+        `name` = #{name},
+        `max_level` = #{maxLevel},
+        `icon_urls` = #{iconUrls}
+    </insert>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from card
+    </select>
+</mapper>
