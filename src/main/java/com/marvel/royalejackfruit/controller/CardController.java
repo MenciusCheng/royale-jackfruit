@@ -40,4 +40,12 @@ public class CardController {
         return "cards";
     }
 
+    @GetMapping("/page")
+    public String getAllCardPage(ModelMap modelMap) {
+        List<Card> cards = cardService.findAll();
+        modelMap.addAttribute("cards", cards);
+        modelMap.addAttribute("page", "card");
+        return "card/card";
+    }
+
 }

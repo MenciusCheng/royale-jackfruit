@@ -34,4 +34,15 @@ public class HomeViewController {
         modelMap.addAttribute("tournaments", tournaments);
         return "tournament";
     }
+
+    @GetMapping("/tournament/page")
+    public String getRecommendTournamentsPage(ModelMap modelMap,
+                                              @RequestParam(required = false, defaultValue = "30") Integer capacity,
+                                              @RequestParam(required = false, defaultValue = "a") String name) {
+
+        Set<TournamentVo> tournaments = tournamentService.getRecommendTournaments(capacity, name);
+        modelMap.addAttribute("tournaments", tournaments);
+        modelMap.addAttribute("page", "tournament");
+        return "tournament/tournament";
+    }
 }
