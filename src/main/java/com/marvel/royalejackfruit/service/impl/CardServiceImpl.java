@@ -66,4 +66,14 @@ public class CardServiceImpl implements CardService {
             }
         }
     }
+
+    @Override
+    public Map<Long, Card> mapById() {
+        List<Card> cards = findAll();
+        Map<Long, Card> cardMap = new HashMap<>();
+        for (Card card : cards) {
+            cardMap.put(card.getId(), card);
+        }
+        return cardMap;
+    }
 }

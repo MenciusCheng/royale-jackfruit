@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.marvel.royalejackfruit.mapper.DeckMapper">
+    <resultMap id="BaseResultMap" type="com.marvel.royalejackfruit.entity.Deck">
+    </resultMap>
+
+    <insert id="create" useGeneratedKeys="true" keyProperty="id">
+        insert into deck set
+        `name` = #{name},
+        `code` = #{code},
+        `remark` = #{remark}
+    </insert>
+
+    <update id="update">
+        update deck set
+        `name` = #{name},
+        `code` = #{code},
+        `remark` = #{remark}
+        where id = #{id}
+    </update>
+
+    <update id="delete">
+        update deck set deleted_at = NOW() where id = #{id}
+    </update>
+
+    <select id="findAll" resultMap="BaseResultMap">
+        select * from deck where deleted_at is null
+    </select>
+</mapper>
