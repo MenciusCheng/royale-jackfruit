@@ -77,3 +77,7 @@ body {
   width: 55.4px;
   height: 65.8px;
 }
+
+.deck-card {
+  padding-bottom: 10px;
+}

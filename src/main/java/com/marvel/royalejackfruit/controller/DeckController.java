@@ -28,8 +28,20 @@ public class DeckController {
     }
 
     @GetMapping("/page")
-    public String getAllDeckPage(ModelMap modelMap) {
-        List<DeckDetail> deckDetails = deckService.findAll();
+    public String getAllDeckPage(ModelMap modelMap,
+                                 @RequestParam(required = false) String codeItem,
+                                 @RequestParam(required = false) Integer start) {
+        if (codeItem != null) {
+            modelMap.addAttribute("codeItem", codeItem);
+        }
+        if (start != null) {
+            modelMap.addAttribute("start", start);
+        }
+
+        List<DeckDetail> deckDetails = deckService.findByParam(codeItem, start);
+        Integer count = deckService.countByParam(codeItem);
+
+        modelMap.addAttribute("count", count);
         modelMap.addAttribute("decks", deckDetails);
         modelMap.addAttribute("page", "deck");
         return "deck/deck";

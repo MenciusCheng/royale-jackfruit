@@ -26,4 +26,20 @@
     <select id="findAll" resultMap="BaseResultMap">
         select * from deck where deleted_at is null
     </select>
+
+    <select id="findByParam" resultMap="BaseResultMap">
+        select * from deck
+        where
+         deleted_at is null
+         and code like #{codeLike}
+        Order By id DESC
+        Limit #{start}, #{limit}
+    </select>
+
+    <select id="countByParam" resultType="java.lang.Integer">
+        select count(*) from deck
+        where
+        deleted_at is null
+        and code like #{codeLike}
+    </select>
 </mapper>

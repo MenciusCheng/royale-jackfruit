@@ -8,11 +8,28 @@
         <#include "../common/nav.ftl">
 
         <div class="row">
+            <form action="page" method="get">
+                <div class="row">
+                    <div class="col-4">
+                        <input type="text" name="codeItem" class="form-control" placeholder="名称" value="<#if codeItem??>${codeItem}</#if>">
+                    </div>
+                    <div class="col-3">
+                        <input type="number" name="start" class="form-control" placeholder="页" value="<#if start??>${start}</#if>">
+                        <label>页10,共${count}</label>
+                    </div>
+                    <div class="col-1">
+                        <button type="submit" class="btn btn-primary">search</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+
+        <div class="row">
             <#list decks as item>
             <div class="col-sm-12 col-lg-4">
-                <div>
+                <div class="deck-card">
                     <div>
-                        ${item.name}
+                        ${item.name} <a class="btn btn-primary btn-sm" href="https://link.clashroyale.com/deck/cn?deck=${item.code}" target="_blank" role="button">cp</a>
                     </div>
                     <div>
                         <img class="card-img"

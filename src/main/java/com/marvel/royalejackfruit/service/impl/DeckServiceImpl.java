@@ -47,6 +47,34 @@ public class DeckServiceImpl implements DeckService {
     @Override
     public List<DeckDetail> findAll() {
         List<Deck> decks = deckMapper.findAll();
+        return decksToDetail(decks);
+    }
+
+    @Override
+    public List<DeckDetail> findByParam(String codeItem, Integer start) {
+        String codeLike = "%%";
+        if (codeItem != null && codeItem.length() > 0) {
+            codeLike = "%" + codeItem + "%";
+        }
+        if (start == null) {
+            start = 0;
+        }
+        Integer size = 10;
+
+        List<Deck> decks = deckMapper.findByParam(codeLike, start, size);
+        return decksToDetail(decks);
+    }
+
+    @Override
+    public Integer countByParam(String codeItem) {
+        String codeLike = "%%";
+        if (codeItem != null && codeItem.length() > 0) {
+            codeLike = "%" + codeItem + "%";
+        }
+        return deckMapper.countByParam(codeLike);
+    }
+
+    private List<DeckDetail> decksToDetail(List<Deck> decks) {
         List<DeckDetail> deckDetails = new ArrayList<>();
         Map<Long, Card> cardMap = cardService.mapById();
         for (Deck deck : decks) {

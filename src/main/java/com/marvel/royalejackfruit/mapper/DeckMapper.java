@@ -1,7 +1,7 @@
 package com.marvel.royalejackfruit.mapper;
 
 import com.marvel.royalejackfruit.entity.Deck;
-import com.marvel.royalejackfruit.entity.UserDeck;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -17,4 +17,8 @@ public interface DeckMapper {
     void delete(Long id);
 
     List<Deck> findAll();
+
+    List<Deck> findByParam(@Param("codeLike") String codeLike, @Param("start") Integer start, @Param("limit") Integer limit);
+
+    int countByParam(@Param("codeLike") String codeLike);
 }

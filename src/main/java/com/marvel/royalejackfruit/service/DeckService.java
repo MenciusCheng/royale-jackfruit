@@ -18,4 +18,8 @@ public interface DeckService {
     void delete(Long id);
 
     List<DeckDetail> findAll();
+
+    List<DeckDetail> findByParam(String codeItem, Integer start);
+
+    Integer countByParam(String codeItem);
 }
