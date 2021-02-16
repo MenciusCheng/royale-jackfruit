@@ -7,22 +7,37 @@
     <div class="container">
         <#include "../common/nav.ftl">
 
-        <div class="row">
-            <form action="page" method="get">
-                <div class="row">
-                    <div class="col-4">
-                        <input type="text" name="codeItem" class="form-control" placeholder="名称" value="<#if codeItem??>${codeItem}</#if>">
-                    </div>
-                    <div class="col-3">
-                        <input type="number" name="start" class="form-control" placeholder="页" value="<#if start??>${start}</#if>">
-                        <label>页10,共${count}</label>
-                    </div>
-                    <div class="col-1">
-                        <button type="submit" class="btn btn-primary">search</button>
+        <form id="searchForm" action="page" method="get">
+            <div class="form-group row">
+                <div class="col">
+                    <input type="text" id="formCodeItem" name="codeItem" class="form-control" placeholder="名称" value="<#if codeItem??>${codeItem}</#if>">
+                </div>
+                <div class="col">
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-secondary" onclick="setCodeItemName('')">全</button>
+                        <button type="button" class="btn btn-secondary" onclick="setCodeItemName('球')">球</button>
+                        <button type="button" class="btn btn-secondary" onclick="setCodeItemName('炮')">炮</button>
+                        <button type="button" class="btn btn-secondary" onclick="setCodeItemName('墓')">墓</button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="form-group row">
+                <div class="col">
+                    <input type="number" id="formStart" name="start" class="form-control" value="<#if start??>${start}</#if>">
+                </div>
+                <div class="col">
+                    <input type="number" id="formSize" name="size" class="form-control" value="<#if size??>${size}</#if>">
+                </div>
+                <div class="col">
+                    <input type="text" readonly class="form-control" value="共${count}">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">search</button>
+                </div>
+            </div>
+        </form>
 
         <div class="row">
             <#list decks as item>
@@ -34,30 +49,38 @@
                     <div>
                         <img class="card-img"
                             src="${item.cards[0].iconUrls}"
-                            alt="Knight">
+                            alt="Knight"
+                            onclick="setCodeItem('${item.cards[0].id}')">
                         <img class="card-img"
                             src="${item.cards[1].iconUrls}"
-                            alt="Knight">
+                            alt="Knight"
+                            onclick="setCodeItem('${item.cards[1].id}')">
                         <img class="card-img"
                             src="${item.cards[2].iconUrls}"
-                            alt="Knight">
+                            alt="Knight"
+                            onclick="setCodeItem('${item.cards[2].id}')">
                         <img class="card-img"
                             src="${item.cards[3].iconUrls}"
-                            alt="Knight">
+                            alt="Knight"
+                            onclick="setCodeItem('${item.cards[3].id}')">
                     </div>
                     <div>
                         <img class="card-img"
                             src="${item.cards[4].iconUrls}"
-                            alt="Knight">
+                            alt="Knight"
+                            onclick="setCodeItem('${item.cards[4].id}')">
                         <img class="card-img"
                             src="${item.cards[5].iconUrls}"
-                            alt="Knight">
+                            alt="Knight"
+                            onclick="setCodeItem('${item.cards[5].id}')">
                         <img class="card-img"
                             src="${item.cards[6].iconUrls}"
-                            alt="Knight">
+                            alt="Knight"
+                            onclick="setCodeItem('${item.cards[6].id}')">
                         <img class="card-img"
                             src="${item.cards[7].iconUrls}"
-                            alt="Knight">
+                            alt="Knight"
+                            onclick="setCodeItem('${item.cards[7].id}')">
                     </div>
                 </div>
             </div>
@@ -66,6 +89,8 @@
         </div>
 
     </div>
+
+    <script src="/demo/deck.js"></script>
 </body>
 
 </html>

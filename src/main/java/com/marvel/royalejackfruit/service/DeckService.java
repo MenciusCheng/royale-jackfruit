@@ -19,7 +19,7 @@ public interface DeckService {
 
     List<DeckDetail> findAll();
 
-    List<DeckDetail> findByParam(String codeItem, Integer start);
+    List<DeckDetail> findByParam(String codeItem, Integer start, Integer size);
 
     Integer countByParam(String codeItem);
 }

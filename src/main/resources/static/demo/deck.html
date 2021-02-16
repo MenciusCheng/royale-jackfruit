@@ -30,22 +30,37 @@
             </div>
         </div>
 
-        <div class="row">
-            <form action="deck.html" method="get">
-                <div class="row">
-                    <div class="col-4">
-                        <input type="text" name="codeItem" class="form-control" placeholder="名称">
-                    </div>
-                    <div class="col-3">
-                        <input type="number" name="start" class="form-control" placeholder="页">
-                        <label>页10,共30</label>
-                    </div>
-                    <div class="col-1">
-                        <button type="submit" class="btn btn-primary">search</button>
+        <form id="searchForm" action="deck.html" method="get">
+            <div class="form-group row">
+                <div class="col">
+                    <input type="text" id="formCodeItem" name="codeItem" class="form-control" placeholder="名称">
+                </div>
+                <div class="col">
+                    <div class="btn-group btn-group-sm">
+                        <button type="button" class="btn btn-secondary" onclick="setCodeItemName('')">全</button>
+                        <button type="button" class="btn btn-secondary" onclick="setCodeItemName('球')">球</button>
+                        <button type="button" class="btn btn-secondary" onclick="setCodeItemName('炮')">炮</button>
+                        <button type="button" class="btn btn-secondary" onclick="setCodeItemName('墓')">墓</button>
                     </div>
                 </div>
-            </form>
-        </div>
+            </div>
+            <div class="form-group row">
+                <div class="col">
+                    <input type="number" id="formStart" name="start" class="form-control">
+                </div>
+                <div class="col">
+                    <input type="number" id="formSize" name="size" class="form-control">
+                </div>
+                <div class="col">
+                    <input type="text" readonly class="form-control" value="共30">
+                </div>
+            </div>
+            <div class="form-group row">
+                <div class="col">
+                    <button type="submit" class="btn btn-primary">search</button>
+                </div>
+            </div>
+        </form>
 
         <div class="row">
             <div class="col-sm-12 col-lg-4">
@@ -56,7 +71,8 @@
                     <div>
                         <img class="card-img"
                             src="https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
-                            alt="Knight">
+                            alt="Knight"
+                            onclick="setCodeItem('26000006')">
                         <img class="card-img"
                             src="https://api-assets.clashroyale.com/cards/300/jAj1Q5rclXxU9kVImGqSJxa4wEMfEhvwNQ_4jiGUuqg.png"
                             alt="Knight">
@@ -192,6 +208,8 @@
 
         </div>
     </div>
+
+    <script src="./deck.js"></script>
 </body>
 
 </html>

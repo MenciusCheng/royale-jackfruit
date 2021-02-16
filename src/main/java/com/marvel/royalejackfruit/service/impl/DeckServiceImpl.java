@@ -51,7 +51,7 @@ public class DeckServiceImpl implements DeckService {
     }
 
     @Override
-    public List<DeckDetail> findByParam(String codeItem, Integer start) {
+    public List<DeckDetail> findByParam(String codeItem, Integer start, Integer size) {
         String codeLike = "%%";
         if (codeItem != null && codeItem.length() > 0) {
             codeLike = "%" + codeItem + "%";
@@ -59,7 +59,6 @@ public class DeckServiceImpl implements DeckService {
         if (start == null) {
             start = 0;
         }
-        Integer size = 10;
 
         List<Deck> decks = deckMapper.findByParam(codeLike, start, size);
         return decksToDetail(decks);

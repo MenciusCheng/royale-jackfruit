@@ -30,15 +30,24 @@ public class DeckController {
     @GetMapping("/page")
     public String getAllDeckPage(ModelMap modelMap,
                                  @RequestParam(required = false) String codeItem,
-                                 @RequestParam(required = false) Integer start) {
+                                 @RequestParam(required = false) Integer start,
+                                 @RequestParam(required = false) Integer size) {
+        return findAll(modelMap, codeItem, start, size);
+    }
+
+    private String findAll(ModelMap modelMap, String codeItem, Integer start, Integer size) {
         if (codeItem != null) {
             modelMap.addAttribute("codeItem", codeItem);
         }
         if (start != null) {
             modelMap.addAttribute("start", start);
         }
+        if (size == null) {
+            size = 15;
+        }
+        modelMap.addAttribute("size", size);
 
-        List<DeckDetail> deckDetails = deckService.findByParam(codeItem, start);
+        List<DeckDetail> deckDetails = deckService.findByParam(codeItem, start, size);
         Integer count = deckService.countByParam(codeItem);
 
         modelMap.addAttribute("count", count);
@@ -58,19 +67,13 @@ public class DeckController {
         deck.setRemark(remark);
         deckService.create(deck);
 
-        List<DeckDetail> deckDetails = deckService.findAll();
-        modelMap.addAttribute("decks", deckDetails);
-        modelMap.addAttribute("page", "deck");
-        return "deck/deck";
+        return findAll(modelMap, null, null, null);
     }
 
     @GetMapping("/delete")
     public String delete(ModelMap modelMap, @RequestParam Long id) {
         deckService.delete(id);
 
-        List<DeckDetail> deckDetails = deckService.findAll();
-        modelMap.addAttribute("decks", deckDetails);
-        modelMap.addAttribute("page", "deck");
-        return "deck/deck";
+        return findAll(modelMap, null, null, null);
     }
 }
